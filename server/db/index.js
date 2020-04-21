@@ -42,7 +42,11 @@ const Message = conn.define('message', {
     allowNull: false
   },
   text: {
-    type: STRING
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   }
 });
 
@@ -51,12 +55,19 @@ Message.belongsTo(User, { as: 'to' });
 
 Message.forUser = function(id){
   return this.findAll({
+    order: [
+      ['createdAt', 'ASC'],
+    ],
     where: {
       [Op.or]: {
         fromId: id,
         toId: id
       }
-    }
+    },
+    include: [
+      { model: User, as: 'from'},
+      { model: User, as: 'to'}
+    ]
   });
 }
 
@@ -124,6 +135,7 @@ const sync = async()=> {
     Message.create({ fromId: ted.id, toId: alice.id, text: 'Hi alice'}),
     Message.create({ fromId: ted.id, toId: bob.id, text: 'Hi Bob!'}),
   ]);
+  await Message.create({ fromId: bob.id, toId: ted.id, text: 'Hey Ted! How is it going?'});
 };
 
 module.exports = {

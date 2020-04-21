@@ -3,6 +3,9 @@ const path = require('path');
 const { User, Message } = require('./db').models;
 const app = express();
 
+app.use('/dist', express.static(path.join(__dirname, '../dist')));
+app.use('/assets', express.static(path.join(__dirname, '../assets')));
+
 const isLoggedIn = (req, res, next)=> {
   if(req.user){
     return next();
@@ -28,7 +31,6 @@ app.use((req, res, next)=> {
     .catch(next);
 });
 
-app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 module.exports = app;
 
@@ -66,4 +68,8 @@ app.post('/api/messages/:toId', isLoggedIn, (req, res, next)=> {
   Message.create({ ...req.body, fromId: req.user.id, toId: req.params.toId})
   .then( message => res.send(message))
   .catch(next);
+});
+
+app.use((err, req, res, next)=> {
+  res.status(err.status || 500).send({ message: err.message });
 });
