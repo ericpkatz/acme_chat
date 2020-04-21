@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './Login';
-import Users from './Users';
+import Chats from './Chats';
 import { connect } from 'react-redux';
 import { loginWithToken, logout } from './store';
 
@@ -25,7 +25,7 @@ class App extends Component{
         auth.id && <button onClick={ logout }>Welcome { auth.username } (Click to Logout)</button>
       }
       {
-        auth.id && <Users /> 
+        auth.id && <Chats /> 
       }
       </Router>
     );

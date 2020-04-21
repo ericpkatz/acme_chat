@@ -63,11 +63,7 @@ Message.forUser = function(id){
         fromId: id,
         toId: id
       }
-    },
-    include: [
-      { model: User, as: 'from'},
-      { model: User, as: 'to'}
-    ]
+    }
   });
 }
 

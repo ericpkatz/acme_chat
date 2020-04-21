@@ -9,8 +9,20 @@ form {
 
 button, input {
   height: 3rem;
+  font-size: 1.5rem;
 }
 
 form > * {
   margin: 1rem;
+}
+
+.chat-list {
+  list-style-type: none;
+  padding: 0;
+}
+.chat {
+  border: solid 1px black;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
 }

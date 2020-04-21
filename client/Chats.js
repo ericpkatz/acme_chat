@@ -2,17 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MessageInput from './MessageInput';
 
-const Users = ({ users, messages, auth })=> {
+const Chats = ({ users, messages, auth })=> {
   return (
-    <ul>
+    <ul className='chat-list'>
       {
         users.map( user => {
           const _messages = messages.filter( message => {
             return message.toId === user.id || message.fromId === user.id;
           })
           return (
-            <li key={ user.id }>
-              { user.username }
+            <li key={ user.id } className='chat'>
+              Your conversation with { user.username }
               <MessageInput user={ user }/> 
               <ul>
               {
@@ -42,9 +42,5 @@ const mapStateToProps = ({ users, messages, auth })=> {
   };
 };
 
-const mapDispatchToProps = ()=> {
-  return {
-  };
-};
 
-export default connect(mapStateToProps)(Users);
+export default connect(mapStateToProps)(Chats);

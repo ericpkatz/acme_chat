@@ -81,7 +81,7 @@ describe('Routes', ()=> {
         .set('authorization', aliceToken)
         .expect(200)
         .then( response => {
-          expect(response.body.length).to.equal(1);
+          expect(response.body.length).to.equal(2);
         });
     });
     it('returns all of bobs messages for bob', ()=> {
@@ -97,7 +97,7 @@ describe('Routes', ()=> {
         .set('authorization', tedToken)
         .expect(200)
         .then( response => {
-          expect(response.body.length).to.equal(2);
+          expect(response.body.length).to.equal(3);
         });
     });
   });
