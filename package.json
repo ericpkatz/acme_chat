@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "mocha test/*spec.js",
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
     "test:dev": "JWT=xyz DATABASE_URL=postgres://localhost/acme_chat_test mocha test/*spec.js --watch",
