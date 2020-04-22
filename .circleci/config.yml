@@ -1,4 +1,4 @@
-version: 2.1
+version: 2.0s
 
 
 jobs:
@@ -15,8 +15,7 @@ jobs:
     
       - image: circleci/postgres:9.6.5-alpine-ram
     steps:
-      - checkout
-      - node/with-cache:
+      - run:
           steps:
             - run: npm install
             - run: npm test
