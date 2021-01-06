@@ -22,7 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "mocha": "^7.1.1",
